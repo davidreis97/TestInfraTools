@@ -1,0 +1,62 @@
+Goss (dgoss):
+    - Fast, but more limited than the other tools.
+    - Open-source
+    - Compatibility and limitations: https://github.com/aelsabbahy/goss#limitations
+        - Linux only (may run on winndows and macos)
+        - Some tests have "limitations" (unspecified).
+
+Serverspec:
+    - Lacks testing for HTTP request
+    - Gives bad results on certain situations (when entrypoint fails it blames the first test from the suite)
+    - Can be optimized to performance levels closer to Goss if the type of OS is specified.
+    - Open-source and can be extendable for tests which are not in the library already
+    - Compatibility and limitations: https://serverspec.org/tutorial.html#multi_os_support
+        - https://github.com/mizzy/specinfra/tree/master/lib/specinfra/command
+
+Inspec:
+    - Open-source
+    - Largest set of features
+    - https://www.inspec.io/docs/reference/migration/ -> Direct comparison with Serverspec
+    - Compatibility and Limitations
+        - https://github.com/inspec/inspec#supported-os
+
+There may be the option of installing one of the tools in a docker container and running it from there (may affect performance).
+
+Tests made on a nodejs server. Time since start of execution of docker build until results are printed.
+
+WITHOUT CACHING, FROM SCRATCH (less relevant test since it depends on network conditions):
+
+Goss: 34,315s
+Serverspec: 48,279s
+Inspec: 38,540s
+
+WITH CACHING, WITH CODE CHANGES (PASSING):
+
+Goss: 2,635s / 2,619s / 2,610s
+Serverspec: 7,266s / 6,078s / 8,100s
+Inspec: 9,755s / 9,584s / 8,775s
+
+WITH CACHING, NO CODE CHANGES (PASSING):
+
+Goss: 1,902s / 1,898s / 1,950s
+Serverspec: 6,344s / 6,191s / 6,681s
+Inspec: 8,731s / 8,869s / 8,724s
+
+WITH CACHING, NO CODE CHANGES (CRASHING ON DOCKER BUILD):
+
+Goss: 2,768s / 2,644s / 2,679s
+Serverspec: 1,765s / 1,767s / 1,762s
+Inspec: 2,768s / 2,644s / 2,679s (Same as goss since docker build is not handled by the tool)
+
+WITH CACHING, NO CODE CHANGES (CRASHING ON ENTRYPOINT):
+
+Goss: 1,338s / 1,380s / 1,376s
+Serverspec: 1,935s / 1,851s / 1,889s
+Inspec: 2,763s / 2,869s / 2,894s
+
+WITH CACHING, NO CODE CHANGES (FAILING ON TESTS):
+
+Goss: 1,905s / 1,861s / 1,825s (Runs all tests)
+Serverspec: 7,264s / 5,120s / 4,969s (Runs all tests)
+Inspec: 9,326s / 8,778s / 8,653s (Runs all tests)
+

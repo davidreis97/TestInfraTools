@@ -1,0 +1,26 @@
+file:
+  /app/package-lock.json:
+    exists: true
+    contains: ["express"]
+  /app/index.js:
+    exists: true
+  /app/package.json:
+    exists: true
+port:
+  tcp6:3333:
+    listening: true
+process:
+  node:
+    running: true
+http:
+  http://localhost:3333:
+    status: 200
+    timeout: 5000
+command:
+  version:
+    exit-status: 0
+    exec: "node --version" 
+    stdout: ["v13.1.0"]
+    stderr: []
+    timeout: 10000 # in milliseconds
+    skip: false
