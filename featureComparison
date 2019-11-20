@@ -1,0 +1,43 @@
+Ver se vale a pena usar goss ou mais vale implementar algo nosso
+
+Check if Address and Port are accessible - goss, serverspec, smoke
+Check command output - goss, serverspec
+Check if provided address is resolvable and confirm ip it resolves to - goss, serverspec
+Validate state of file - goss, serverspec
+Validate state of a group - goss, serverspec
+validate http response status code and content - goss, smoke
+validate network interface values - goss, serverspec
+validate kernel param values - goss, serverspec
+validate mount point attributes - goss, serverspec
+validate state of package - goss, serverspec
+validate state of local port - goss, serverspec
+validate if process is running - goss, serverspec
+validate state of service - goss, serverspec
+validate state of a user - goss, serverspec
+validate state of a network bond - serverspec
+validate state of a network bridge - serverspec
+validate state of a linux cgroup - serverspec
+check entries on cron - serverspec
+validate default gateway - serverspec
+validate docker_image - serverspec (CHECK- Validate itself or DinD?)
+validete IIS Application Pool - serverspec
+validate ip6tables - serverspec
+validate ipfilter - serverspec
+validate ipnat - serverspec
+validate iptables - serverspec
+validate kernel_module - serverspec
+validate linux_audit_system - serverspec
+validate Linux Container (LXC) - serverspec
+validate Mail alias - serverspec
+validate mysql_config - serverspec
+validate php config - serverspec 
+validate ppa repository - serverspec
+validate routing table - serverspec
+validate SELinux - serverspec
+validate SELinux module - serverspec
+validate x509_certificate - serverspec
+validate x509_private_key - serverspec
+validate Windows Feature - serverspec
+validate Windows Registry Key - serverspec
+validate Yumrepo - serverspec
+validate ZFS Pool - serverspec
