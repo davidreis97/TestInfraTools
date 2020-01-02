@@ -1,0 +1,9 @@
+version = 1
+
+test_patterns = [
+  "/nodeproject/*"
+]
+
+[[analyzers]]
+name = "docker"
+enabled = true
